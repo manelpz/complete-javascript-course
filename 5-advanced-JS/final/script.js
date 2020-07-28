@@ -30,13 +30,13 @@ mark.calculateAge();
 console.log(john.lastName);
 console.log(jane.lastName);
 console.log(mark.lastName);
-*/
+
 
 
 
 /////////////////////////////
 // Lecture: Object.create
-/*
+
 var personProto = {
     calculateAge: function() {
         console.log(2016 - this.yearOfBirth);
@@ -53,13 +53,13 @@ var jane = Object.create(personProto, {
     yearOfBirth: { value: 1969 },
     job: { value: 'designer' }
 });
-*/
+
 
 
 
 /////////////////////////////
 // Lecture: Primitives vs objects
-/*
+
 // Primitives
 var a = 23;
 var b = a;
@@ -95,13 +95,13 @@ change(age, obj);
 
 console.log(age);
 console.log(obj.city);
-*/
+
 
 
 
 /////////////////////////////
 // Lecture: Passing functions as arguments
-/*
+
 var years = [1990, 1965, 1937, 2005, 1998];
 
 function arrayCalc(arr, fn) {
@@ -135,13 +135,12 @@ var rates = arrayCalc(ages, maxHeartRate);
 
 console.log(ages);
 console.log(rates);
-*/
 
 
 
 /////////////////////////////
 // Lecture: Functions returning functions
-/*
+
 function interviewQuestion(job) {
     if (job === 'designer') {
         return function(name) {
@@ -169,13 +168,12 @@ designerQuestion('Mark');
 designerQuestion('Mike');
 
 interviewQuestion('teacher')('Mark');
-*/
 
 
 
 /////////////////////////////
 // Lecture: IIFE
-/*
+
 function game() {
     var score = Math.random() * 10;
     console.log(score >= 5);
@@ -195,13 +193,13 @@ game();
     var score = Math.random() * 10;
     console.log(score >= 5 - goodLuck);
 })(5);
-*/
+
 
 
 
 /////////////////////////////
 // Lecture: Closures
-/*
+
 function retirement(retirementAge) {
     var a = ' years left until retirement.';
     return function(yearOfBirth) {
@@ -215,7 +213,7 @@ var retirementGermany = retirement(65);
 var retirementIceland = retirement(67);
 
 retirementGermany(1990);
-retirementUS(1990);
+retirementUS(1990);    
 retirementIceland(1990);
 
 //retirement(66)(1990);
@@ -240,7 +238,7 @@ interviewQuestion('teacher')('John');
 
 /////////////////////////////
 // Lecture: Bind, call and apply
-/*
+
 var john = {
     name: 'John',
     age: 26,
@@ -264,18 +262,23 @@ john.presentation('formal', 'morning');
 
 john.presentation.call(emily, 'friendly', 'afternoon');
 
-//john.presentation.apply(emily, ['friendly', 'afternoon']);
+john.presentation.apply(emily, ['friendly', 'afternoon']);
 
-var johnFriendly = john.presentation.bind(john, 'friendly');
 
-johnFriendly('morning');
-johnFriendly('night');
+//var johnFriendly = john.presentation.bind(john, 'friendly');
 
+//johnFriendly('morning');
+
+var johnFriendly = john.presentation.bind(john, 'friendly')('morning');
+//,'afternoon');
+//johnFriendly('night');
+/*
 var emilyFormal = john.presentation.bind(emily, 'formal');
-emilyFormal('afternoon');
+emilyFormal('afternoon');*/
 
 
 // Another cool example
+/*
 var years = [1990, 1965, 1937, 2005, 1998];
 
 function arrayCalc(arr, fn) {
@@ -297,8 +300,8 @@ function isFullAge(limit, el) {
 var ages = arrayCalc(years, calculateAge);
 var fullJapan = arrayCalc(ages, isFullAge.bind(this, 20));
 console.log(ages);
-console.log(fullJapan);
-*/
+console.log(fullJapan);*/
+
 
 
 
@@ -308,6 +311,7 @@ console.log(fullJapan);
 
 
 /*
+
 --- Let's build a fun quiz game in the console! ---
 
 1. Build a function constructor called Question to describe a question. A question should include:
